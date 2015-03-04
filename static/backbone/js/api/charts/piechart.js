@@ -59,6 +59,50 @@ define(["charts/chart",
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
                     plotOptions: {
+                        series: 
+                        {
+                            cursor: 'pointer',
+                            point: 
+                            {
+                                events: 
+                                {
+                                    click: function()
+                                    {
+
+                                        //$('#myModal').modal('show')
+                                        // self.imageModal = new ui.dialog({
+                                        //     id: 'image-modal',
+                                        //     width: 740,
+                                        //     height: 350,
+                                        //     overflowY: 'auto',
+                                        //     showTitle: false,
+                                        // });
+                                        // self.imageModal.show();
+
+                                        //   var button = $(event.relatedTarget) // Button that triggered the modal
+                                        //   var recipient = button.data('whatever') // Extract info from data-* attributes
+                                        //   
+                                        //   var modal = $(this)
+                                        //   modal.find('.modal-title').text('New message to ' + recipient)
+                                        //   modal.find('.modal-body input').val(recipient)
+                                        // })
+                                        // var modal = $(this)
+                                        // modal.find('.modal-title').text('New message to ' + recipient)
+                                        // modal.find('.modal-body input').val(recipient)
+
+                                        var userColor = prompt('Please enter a color');//replace with modal and find out how to do colorpicker
+                                        //make sure to include color_picker js color 
+
+                                        // console.log(userColor);
+                                        // console.log(that.$el.highcharts());
+                                        // console.log(that.$el.highcharts().series[0].data);
+                                        that.$el.highcharts().series[0].update({
+                                            color: userColor});
+                                        
+                                    }
+                                }
+                            }
+                        },
                         pie: {
                             allowPointSelect: true,
                             cursor: 'pointer',

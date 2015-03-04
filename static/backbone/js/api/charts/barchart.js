@@ -48,11 +48,20 @@ define(["underscore",
                 });
             },
             renderChart: function () {
+                var that = this;
                 this.$el.css("height", "auto");
                 this.setSize();
                 this.transformData();
                 var chartOpts = {
                     chart: {
+                        // events : {
+                        //     click: function(event) 
+                        //     {
+                        //         // log the min and max of the primary, datetime x-axis
+                        //         alert("the bar was clicked");
+
+                        //     }
+                        // },
                         type: 'column',
                         height: this.chartHeight
                     },
@@ -66,6 +75,50 @@ define(["underscore",
                         min: 0
                     },
                     plotOptions: {
+                        series: 
+                        {
+                            cursor: 'pointer',
+                            point: 
+                            {
+                                events: 
+                                {
+                                    click: function()
+                                    {
+
+                                        // $('#myModal').modal('show')
+                                        // self.imageModal = new ui.dialog({
+                                        //     id: 'image-modal',
+                                        //     width: 740,
+                                        //     height: 350,
+                                        //     overflowY: 'auto',
+                                        //     showTitle: false,
+                                        // });
+                                        // self.imageModal.show();
+
+                                        //   var button = $(event.relatedTarget) // Button that triggered the modal
+                                        //   var recipient = button.data('whatever') // Extract info from data-* attributes
+                                        //   
+                                        //   var modal = $(this)
+                                        //   modal.find('.modal-title').text('New message to ' + recipient)
+                                        //   modal.find('.modal-body input').val(recipient)
+                                        // })
+                                        // var modal = $(this)
+                                        // modal.find('.modal-title').text('New message to ' + recipient)
+                                        // modal.find('.modal-body input').val(recipient)
+
+                                        var userColor = prompt('Please enter a color');//replace with modal and find out how to do colorpicker
+                                        //make sure to include color_picker js color 
+
+                                        // console.log(userColor);
+                                        // console.log(that.$el.highcharts());
+                                        // console.log(that.$el.highcharts().series[0].data);
+                                        that.$el.highcharts().series[0].update({
+                                            color: userColor});
+                                        
+                                    }
+                                }
+                            }
+                        },
                         column: {
                             pointPadding: 0.2,
                             borderWidth: 0
@@ -77,7 +130,8 @@ define(["underscore",
                         footerFormat: '</table>',
                         shared: true,
                         useHTML: true
-                    }
+                    },
+
                 };
                 _.extend(chartOpts, { series: this.seriesData });
                 this.$el.highcharts(chartOpts);
