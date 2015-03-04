@@ -26,6 +26,9 @@ define(["underscore",
                     this.showInitialMessage();
                 }
             },
+            transformDataAvg: function () {
+                
+            },
             transformData: function () {
                 var collection = this.dataManager.getRecords(),
                     that = this,
